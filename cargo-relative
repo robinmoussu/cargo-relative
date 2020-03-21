@@ -26,7 +26,7 @@ def fix_path(match):
     )
 
 command_line = ["cargo"] + sys.argv[1:]
-cargo = subprocess.Popen(command_line, stdout=DEVNULL, stderr=subprocess.PIPE)
+cargo = subprocess.Popen(command_line, stderr=subprocess.PIPE)
 for line in cargo.stderr:
     line = line.decode('utf-8')
     line = path_re.sub(fix_path, line)
